@@ -1,0 +1,15 @@
+#ddev-generated
+ARG ULID_VERSION="v0.2.2"
+USER root
+RUN apt-get install -y --no-install-recommends curl sed
+RUN mkdir -p /tmp/pgx_ulid/deb_extracted
+RUN curl -Lo /tmp/pgx_ulid/pgx_ulid.deb "https://github.com/pksunkara/pgx_ulid/releases/download/${ULID_VERSION}/pgx_ulid-${ULID_VERSION}-pg$(pg_config --version | sed -nE 's/^PostgreSQL ([0-9]{2}).*/\1/p')-amd64-linux-gnu.deb"
+WORKDIR /tmp/pgx_ulid/
+# The installation locations in the deb file do not work because part of them
+# get overridden by the docker compose volume used for persistence.
+# Manually extracting and placing the files instead.
+RUN dpkg-deb -x pgx_ulid.deb deb_extracted/
+WORKDIR /tmp/pgx_ulid/deb_extracted/
+RUN cp -f var/lib/postgresql/extension/ulid* "$(pg_config --sharedir)/extension/"
+RUN cp -f usr/lib/postgresql/lib/pgx_ulid.so "$(pg_config --pkglibdir)/"
+WORKDIR /

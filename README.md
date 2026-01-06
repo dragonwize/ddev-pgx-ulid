@@ -7,41 +7,25 @@
 
 ## Overview
 
-This add-on integrates Pgx Ulid into your [DDEV](https://ddev.com/) project.
+This add-on integrates Postgres extension for ULID [pgx_ulid](https://github.com/pksunkara/pgx_ulid) into your [DDEV](https://ddev.com/) project.
 
 ## Installation
 
 ```bash
 ddev add-on get dragonwize/ddev-pgx-ulid
 ddev restart
+ddev create-ext-ulid
 ```
 
 After installation, make sure to commit the `.ddev` directory to version control.
 
 ## Usage
 
-| Command | Description |
-| ------- | ----------- |
+| Command | Description                                     |
+| ------- |-------------------------------------------------|
 | `ddev describe` | View service status and used ports for Pgx Ulid |
-| `ddev logs -s pgx-ulid` | Check Pgx Ulid logs |
-
-## Advanced Customization
-
-To change the Docker image:
-
-```bash
-ddev dotenv set .ddev/.env.pgx-ulid --pgx-ulid-docker-image="ddev/ddev-utilities:latest"
-ddev add-on get dragonwize/ddev-pgx-ulid
-ddev restart
-```
-
-Make sure to commit the `.ddev/.env.pgx-ulid` file to version control.
-
-All customization options (use with caution):
-
-| Variable | Flag | Default |
-| -------- | ---- | ------- |
-| `PGX_ULID_DOCKER_IMAGE` | `--pgx-ulid-docker-image` | `ddev/ddev-utilities:latest` |
+| `ddev logs -s pgx-ulid` | Check Pgx Ulid logs                             |
+| `ddev create-ext-ulid` | Add the Postgres extension to your database     |
 
 ## Credits
 

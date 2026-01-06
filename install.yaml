@@ -1,6 +1,7 @@
 name: pgx-ulid
 
 project_files:
-  - docker-compose.pgx-ulid.yaml
+  - db-build/Dockerfile.pgx-ulid
+  - commands/db/create-ext-ulid
 
 ddev_version_constraint: '>= v1.24.3'
