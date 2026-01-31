@@ -1,2 +1,9 @@
+#!/usr/bin/env bash
 #ddev-generated
+
+## DBTypes: postgres
+## Description: Add ulid extension to default DDEV database.
+## Usage: create-ext-ulid
+## Example: ddev create-ext-ulid
+
 psql -c 'CREATE EXTENSION IF NOT EXISTS ulid'
