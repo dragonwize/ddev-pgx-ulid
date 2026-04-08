@@ -1,5 +1,5 @@
 #ddev-generated
-ARG ULID_VERSION="v0.2.2"
+ARG ULID_VERSION="v0.2.3"
 USER root
 RUN apt-get install -y --no-install-recommends curl sed
 RUN mkdir -p /tmp/pgx_ulid/deb_extracted
